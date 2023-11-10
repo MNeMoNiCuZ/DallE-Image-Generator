@@ -1,6 +1,8 @@
 # DallE-Image-Generator
 An image generator using DallE and the OpenAI API to create batches of images.
 
+It could be useful to batch-generate image datasets for concept finetuning or style training for AI image models like Stable Diffusion.
+
 # Usage
 1. Open the settings.ini and add your OpenAI API Key.
 2. Launch DallEGenerator.py
