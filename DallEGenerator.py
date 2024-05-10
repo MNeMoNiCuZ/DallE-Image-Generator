@@ -1,26 +1,6 @@
 import subprocess
 import sys
 import pkg_resources
-
-required_packages = {
-    "openai": "openai",
-    "requests": "requests",
-}
-
-def install_package(package, user_package_name=None):
-    if user_package_name is None:
-        user_package_name = package
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-    globals()[package] = __import__(user_package_name)
-
-for package, user_package_name in required_packages.items():
-    try:
-        globals()[package] = __import__(user_package_name)
-        print(f"Package '{user_package_name}' is successfully imported.")
-    except ImportError:
-        print(f"Package '{user_package_name}' not found. Installing...")
-        install_package(package, user_package_name)
-
 import tkinter as tk
 from tkinter import scrolledtext, Canvas, Scrollbar, Frame, simpledialog, messagebox
 from itertools import product
@@ -43,7 +23,7 @@ def check_openai_version(required_version='1.2.0'):  # Ensure this matches the v
     if pkg_resources.parse_version(actual_version) < pkg_resources.parse_version(required_version):
         raise ImportError(f"Your openai package version is {actual_version}, but version {required_version} or higher is required.")
     else:
-        print(f"openai package version is {actual_version}, the required version or higher is installed.")
+        print(f"openai package version is {actual_version}.")
 
 # Call the version check function
 check_openai_version()
